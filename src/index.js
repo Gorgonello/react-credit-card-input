@@ -93,6 +93,7 @@ type Props = {
   cardExpiryInputRenderer: Function,
   cardNumberInputRenderer: Function,
   cardZipInputRenderer: Function,
+  onError?: Function,
   cardExpiryInputProps: Object,
   cardNumberInputProps: Object,
   cardCVCInputProps: Object,
@@ -428,8 +429,8 @@ class CreditCardInput extends Component<Props, State> {
     };
   };
 
-  setFieldInvalid = (errorText: string, inputName) => {
-    const { invalidClassName } = this.props;
+  setFieldInvalid = (errorText: string, inputName?: string) => {
+    const { invalidClassName, onError } = this.props;
     // $FlowFixMe
     document.getElementById('field-wrapper').classList.add(invalidClassName);
     this.setState({ errorText });
@@ -437,6 +438,10 @@ class CreditCardInput extends Component<Props, State> {
     if (inputName) {
       const { onError } = this.props[`${inputName}InputProps`];
       onError && onError(errorText);
+    }
+
+    if (onError) {
+      onError(errorText);
     }
   };
 

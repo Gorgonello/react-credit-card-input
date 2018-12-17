@@ -20,17 +20,17 @@ storiesOf('CreditCardInput', module)
         cardCVCInputProps={{
           onBlur: e => console.log('cvc blur', e),
           onChange: e => console.log('cvc change', e),
-          onError: err => console.log('cardCVCInputPropserror: ', err)
+          onError: err => console.log(`cvc error: ${err}`)
         }}
         cardExpiryInputProps={{
           onBlur: e => console.log('expiry blur', e),
           onChange: e => console.log('expiry change', e),
-          onError: err => console.log('cardExpiryInputPropserror: ', err)
+          onError: err => console.log(`expiry error: ${err}`)
         }}
         cardNumberInputProps={{
           onBlur: e => console.log('number blur', e),
           onChange: e => console.log('number change', e),
-          onError: err => console.log('cardNumberInputPropserror: ', err)
+          onError: err => console.log(`number error: ${err}`)
         }}
       />
     </Container>
